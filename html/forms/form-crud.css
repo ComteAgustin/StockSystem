@@ -1,0 +1,53 @@
+* {
+    color: black;
+    text-align: left;
+}
+
+.section {
+    width: 80vw;
+    height: 90vh;
+}
+
+.section-h3 {
+    padding: 10px 0;
+    font-size: 1.5em;
+}
+
+.section-h3 span {
+    font-size: .7em;
+    font-weight: 200;
+}
+
+.section--body {
+    background-color: white;
+}
+
+.section--body h2 {
+    padding: 10px 0;
+    font-size: 2em;
+}
+
+.info {
+    background-color: var(--info-color);
+    margin-bottom: 40px;
+}
+
+.info-body {
+    color: var(--font-color);
+    padding: 10px 0;
+}
+
+.info-body h5 {
+    font-size: 1.1em;
+    color: inherit;
+}
+
+.info-body h5 i {
+    font-size: 1.5em;
+    margin: 0 5px 0 0;
+    color: inherit;
+}
+
+.info-body p {
+    color: inherit;
+}

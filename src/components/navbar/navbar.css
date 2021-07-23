@@ -1,0 +1,53 @@
+/* Navbar Styles */
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--background-navbar-color);
+    height: 10vh;
+}
+
+.navbar--title {
+    width: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--secondary-font);
+}
+
+.navbar--main {
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 6px #1f1f1f;
+}
+
+.hamburger {
+    margin-left: 20px;
+    font-size: 2em;
+}
+
+.menu-account ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style-type: none;
+}
+
+.menu-account .item-menu {
+    margin-left: 30px;
+    font-size: 2em;
+}
+
+.menu-account .item-menu:last-child {
+    margin-right: 20px;
+}
+
+.item-menu:hover,
+.hamburger:hover {
+    transform: scale(1.2, 1.2);
+    cursor: pointer;
+}
