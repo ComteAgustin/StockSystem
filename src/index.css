@@ -8,15 +8,17 @@
     --primary-font: "roboto";
     --secondary-font: "caesar dressing";
     --font-color: #ffffff;
+    --dark-color: #000000;
+    --error-color: rgb(255, 0, 0);
     --background-color: #d3d3d3;
     --background-navbar-color: #003666;
     --background-sidebar-color: #001f3a;
     --sidebar-h3-color: #747474;
     --sidebar-dropdown-color: #bebebe;
     --info-color: #5392cb;
-    --s: #ff624d;
-    --a: #f3a022;
-    --f: #14732e;
+    --providers-color: #ff624d;
+    --reports-color: #f3a022;
+    --stock-color: #14732E;
 }
 
 
@@ -53,21 +55,37 @@ ul {
 .form-group {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     margin-top: 18px;
 }
 
 .label-form {
     color: var(--sidebar-h3-color);
+    font-size: 1.2em;
 }
 
 .input-form {
     border: none;
     border-bottom: 1px solid var(--sidebar-h3-color);
-    padding: 5px 0;
+    padding: 10px 2px;
+    outline: none;
+    color: var(--sidebar-h3-color);
+    text-align: left;
+    font-size: 1.1em;
 }
 
 .b-form {
     color: var(--info-color);
-    margin: 30px 0;
-    display: inline-block;
+    border: none;
+    background-color: transparent;
+    font-size: 1.2em;
+    padding: 30px 0;
+    display: block;
+    cursor: pointer;
+}
+
+.error {
+    color: var(--error-color);
+    font-size: .9em;
+    margin: 10px 10px 0 10px;
 }

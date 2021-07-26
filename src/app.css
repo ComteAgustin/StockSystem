@@ -1,5 +1,8 @@
-/* "/" Styles  */
 .main-layout {
     display: flex;
     flex-direction: row;
+}
+
+.main-layout .routes {
+    width: 80vw;
 }

@@ -43,19 +43,19 @@ const Sidebar = () => {
                             <div className="dropdown-menu">
                                 <ul className="dropdown-ul container">
                                     <li className="dropdown-li">
-                                        <Link to="articles" className="dropdown-item">
+                                        <Link to="/articles" className="dropdown-item">
                                             <FontAwesomeIcon icon={faShoppingBag} className="icon" />
                                             Articulo
                                         </Link>
                                     </li>
                                     <li className="dropdown-li">
-                                        <Link to="provider" className="dropdown-item">
+                                        <Link to="/providers" className="dropdown-item">
                                             <FontAwesomeIcon icon={faTruck} className="icon" />
                                             Proveedor
                                         </Link>
                                     </li>
                                     <li className="dropdown-li">
-                                        <Link to="stock" className="dropdown-item">
+                                        <Link to="/stock" className="dropdown-item">
                                             <FontAwesomeIcon icon={faBoxes} className="icon" />    
                                             Stock
                                         </Link>

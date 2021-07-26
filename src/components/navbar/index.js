@@ -1,7 +1,8 @@
 // Import dependecies
 import React from 'react'
+import {Link} from 'wouter'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBars, faUser, faTimes} from '@fortawesome/free-solid-svg-icons'
+import {faUser, faTimes} from '@fortawesome/free-solid-svg-icons'
 // Import Css
 import './navbar.css'
 
@@ -16,8 +17,8 @@ const Navbar = () => {
                 <div></div>
                 <div className="menu-account">
                     <ul>
-                        <li className="item-menu"><FontAwesomeIcon icon={faUser} /></li>
-                        <li className="item-menu"><FontAwesomeIcon icon={faTimes} /></li>
+                        <li className="item-menu"><Link to="/config"><FontAwesomeIcon icon={faUser} /></Link></li>
+                        <li className="item-menu"><Link to="/signin"><FontAwesomeIcon icon={faTimes} /></Link></li>
                     </ul>
                 </div>
             </div>

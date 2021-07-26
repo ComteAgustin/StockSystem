@@ -2,7 +2,6 @@
 
 .sidebar {
     background-color: var(--background-sidebar-color);
-    position: fixed;
     width: 20vw;
     height: 90vh;
     margin: 0 auto 0 0;

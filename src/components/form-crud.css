@@ -1,0 +1,61 @@
+.section {
+    width: 80vw;
+    height: 90vh;
+    padding: 40px 0 0 0;
+}
+
+.section-h3 {
+    padding: 10px 0;
+    font-size: 1.5em;
+    text-align: left;
+    color: var(--dark-color);
+}
+
+.section-h3 span {
+    font-size: .7em;
+    font-weight: 200;
+    text-align: left;
+    color: var(--dark-color);
+    margin-left: 10px;
+}
+
+.section--body {
+    background-color: white;
+}
+
+.section--body h2 {
+    padding: 10px 0;
+    font-size: 2em;
+    color: var(--dark-color);
+    text-align: left;
+    margin-top: 20px;
+    padding: 20px 0;
+}
+
+.info {
+    background-color: var(--info-color);
+    margin-bottom: 40px;
+}
+
+.info-body {
+    color: var(--font-color);
+    padding: 22px 0;
+}
+
+.info-body h5 {
+    font-size: 1.1em;
+    color: inherit;
+    text-align: left;
+}
+
+.info-body h5 i {
+    font-size: 1.5em;
+    margin: 0 5px 0 0;
+    color: inherit;
+    text-align: left;
+}
+
+.info-body p {
+    color: inherit;
+    text-align: left;
+}
