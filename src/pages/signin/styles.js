@@ -1,28 +1,33 @@
-h2 {
-    margin-top: 50px;
+// Import dependencies
+import styled from '@emotion/styled'
+import {Link} from 'wouter'
+import {Field} from 'formik' 
+
+// Styles 
+
+// Signin H2
+export const SinginH2 = styled.h2`
     font-size: 2em;
     color: var(--info-color);
-}
+`
 
-.signin {
+// Signin Container
+export const SigninContainer = styled.div`
     background-color: var(--font-color);
     width: 25vw;
     color: black;
-    margin: 40px auto 0 auto;
-}
+    margin: 10vh auto 0 auto;
+`
 
-.signin h3 {
+// Singin H3
+export const SigninH3 = styled.h3`
     color: inherit;
     padding: 20px 0;
     font-size: 1.5em;
-}
+`
 
-.signin-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.signin-form .form-group .input-signin {
+// Singin Input
+export const SigninInput = styled(Field)`
     border: none;
     border-radius: 6px;
     background-color: #ececec;
@@ -31,21 +36,23 @@ h2 {
     width: 100%;
     color: var(--dark-color);
     margin-bottom: 10px;
-}
+`
 
-.signin-form .btn {
+// Signin Btn
+export const SigninBtn = styled.button`
     border: 1px solid var(--info-color);
     border-radius: 10px;
     padding: 10px;
     color: var(--dark-color);
     cursor: pointer;
     background-color: var(--background-color);
-    margin-top: 10px;
-}
+    margin: 10px 0 10px 0;
+`
 
-.signin-form a {
+// Singin Register
+export const SigninRegister = styled(Link)`
     text-align: right;
     color: var(--info-color);
-    padding: 20px 5px;
+    padding: 0 0 0 10px;
     text-decoration: underline;
-}
+`

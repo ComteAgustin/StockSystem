@@ -1,6 +1,25 @@
 // Import dependencies
-import React from 'react'
-import {Formik, Form, Field, ErrorMessage} from 'formik'
+import React, { useEffect } from 'react'
+import {Formik} from 'formik'
+import useLocation from 'wouter/use-location'
+import {toast} from 'react-toastify'
+import {REGEX} from 'vars'
+import {useDispatch, useSelector} from 'react-redux'
+import {createStock} from 'redux/stockDuck'
+import {getArticles} from 'redux/articlesDuck'
+import {getProviders} from 'redux/providersDuck'
+// Import components
+import SelectInput from 'components/selectInput'
+import {Toastify} from './toast'
+import {
+    FormContainer,
+    FormGroup,
+    FormError,
+    FormInput,
+    FormLabel,
+    FormButton,
+    FormColumns
+} from 'styles/formStyles'
 
 // Initial values for formik
 const initialValues = {
@@ -12,64 +31,107 @@ const initialValues = {
     provider: String
 }
 
+// ReceiptType select array
+const receiptType = [
+    {
+        name: "recibo"
+    },
+    {
+        name: "factura"
+    }
+]
+
 // Component
 const StockForm = () => {
+    
+    // Init hook for navigate
+    const [, navigate] = useLocation()
+
+    // Init Redux dispatch hook
+    const dispatch = useDispatch()
+
+    // Update articles and providers for select inputs
+    useEffect(() => {
+        dispatch(getArticles())
+        dispatch(getProviders())
+    }, [dispatch])
+
+    // Save in a var articles and providers
+    const articles = useSelector(store => store.articles)
+    const providers = useSelector(store => store.providers)
     
     // Validate form
     const validate = (values) => {
         const errors = {}
 
+        if(!REGEX.numbers.test(values.amount)) {
+            errors.amount = 'Ingresar precio'
+        }
+
+        if(!REGEX.numbers.test(values.receiptNumber)) {
+            errors.receiptNumber = 'Solo se pueden ingresar numeros'
+        }
+
         return errors
     }
- 
+
+    // Return
     return(
         <Formik
         initialValues={initialValues}
         validate={validate}
-        onSubmit={() => {}}
+        onSubmit={values => {
+            dispatch(createStock(values))
+            toast.success("Stock registrado")
+            
+            setTimeout(() => {
+                navigate('/')
+            }, 3000)
+        }}
         >
             {
-                ({article, quantity, amount, receipt, receiptNumber, provider}) => (
-                <Form className="form container">
-                    <div class="form-group single">
-                        <label for="article" className="label-form">Articulo</label>
-                        <Field type="text" name="article" className="input-form" />
-                        <ErrorMessage className="error" name="article" component="span" />
-                    </div>
-                    <div className="form-columns">
-                        <div className="form-group">
-                            <label for="quantity" class="label-form">Cantidad</label>
-                            <Field type="text" name="quantity" className="input-form" />
-                            <ErrorMessage className="error" name="quantity" component="span" />
-                        </div>
+                ({article, quantity, amount, receipt, receiptNumber, provider, handleChange}) => (
+                <FormContainer>
+                    <FormGroup>
+                        <Toastify />
+                        <FormLabel for="article">Articulo</FormLabel>
+                        <SelectInput single type="text" name="article" value={article} onChange={handleChange} items={articles.articles} />
+                        <FormError name="article" component="span" />
+                    </FormGroup>
+                    <FormColumns>
+                        <FormGroup>
+                            <FormLabel for="quantity">Cantidad</FormLabel>
+                            <FormInput type="number" name="quantity" value={quantity} />
+                            <FormError name="quantity" component="span" />
+                        </FormGroup>
 
-                        <div className="form-group">
-                            <label for="amount" className="label-form">Precio</label>
-                            <Field type="search" name="amount" className="input-form" />
-                            <ErrorMessage className="error" name="amount" component="span" />
-                        </div>
+                        <FormGroup>
+                            <FormLabel for="amount">Precio Total</FormLabel>
+                            <FormInput type="number" name="amount" value={amount} />
+                            <FormError name="amount" component="span" />
+                        </FormGroup>
 
-                        <div className="form-group">
-                            <label for="receipt" className="label-form">Recibo</label>
-                            <Field type="search" name="receipt" className="input-form" />
-                            <ErrorMessage className="error" name="receipt" component="span" />
-                        </div>
+                        <FormGroup>
+                            <FormLabel for="receipt">Comprobante</FormLabel>
+                            <SelectInput column type="text" name="receipt" value={receipt} onChange={handleChange} items={receiptType} />
+                            <FormError name="receipt" component="span" />
+                        </FormGroup>
 
-                        <div className="form-group">
-                            <label for="receiptNumber" className="label-form">Numero de recibo</label>
-                            <Field type="search" name="receiptNumber" className="input-form" />
-                            <ErrorMessage className="error" name="receipt" component="span" />
-                        </div>
+                        <FormGroup>
+                            <FormLabel for="receiptNumber">Numero de comprobante</FormLabel>
+                            <FormInput type="number" name="receiptNumber" value={receiptNumber} />
+                            <FormError name="receiptNumber" component="span" />
+                        </FormGroup>
 
-                        <div className="form-group">
-                            <label for="provider" className="label-form">Proveedor</label>
-                            <Field type="search" name="provider" className="input-form" />
-                            <ErrorMessage className="error" name="provider" component="span" />
-                        </div>
+                        <FormGroup>
+                            <FormLabel for="provider">Proveedor</FormLabel>
+                            <SelectInput column type="text" name="provider" value={provider} onChange={handleChange} items={providers.providers} />
+                            <FormError name="provider" component="span" />
+                        </FormGroup>
 
-                    </div>
-                    <button className="b-form">Guardar</button>
-                </Form>
+                    </FormColumns>
+                    <FormButton>Guardar</FormButton>
+                </FormContainer>
             )}
         </Formik>
     )

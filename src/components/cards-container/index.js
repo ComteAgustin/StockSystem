@@ -1,64 +1,106 @@
 // Import dependencies
-import React from 'react'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import React, {useState, useEffect} from 'react'
 import {faDollarSign, faBoxes, faTruck, faClone} from '@fortawesome/free-solid-svg-icons'
 import {Link} from 'wouter'
+import useProviders from 'hooks/useProviders'
+import useStock from 'hooks/useStock'
+import useReports from 'hooks/useReports'
+import useSales from 'hooks/useSales'
+import { useDispatch } from 'react-redux'
+// Import styled component
+import {
+    FullCard,
+    CardContainer,
+    Card,
+    P,
+    StatusSpan,
+    Icon,
+} from './styles'
 // Import css
 import 'index.css'
-import './cards.css'
+import { getTotalSales } from 'redux/salesDuck'
 
 // Component
 const Cards = () => {
+    
+    const dispatch = useDispatch()
 
+    const {sales, totalSales} = useSales()
+    const {monthValues, spentMoney} = useReports()
+    
+    
+    useEffect(() => {
+        const monthlySales = monthValues(sales)
+        dispatch(getTotalSales(spentMoney(monthlySales)))
+    }, [sales])
+
+    // Check if there are stock or not with stock hook function
+    const {checkStock} = useStock()
+    const statusStock = checkStock()
+
+    // Get alls providers
+    const {providers} = useProviders()
+
+    // Return
     return(
-        <div className="card-container container">
-            <div className="card sells">
-                <div className="card-info">
-                    <span>0</span>
-                    <p>Ventas del mes</p>
+        <CardContainer>
+            <Card color="info">
+                <div>
+                    <StatusSpan>
+                        {
+                            totalSales
+                        }
+                    </StatusSpan>
+                    <P>Ventas del mes</P>
                 </div>                    
-                <FontAwesomeIcon className="icon" icon={faDollarSign} />
-            </div>
+                <Icon color="info" icon={faDollarSign} />
+            </Card>
 
-            <div className="fullcard stock">
-                <div className="card">
-                    <div className="card-info">
-                        <span>-</span>
-                        <p>Compras/Stock</p>
+            <FullCard color="stock">
+                <Card>
+                    <div>
+                        <StatusSpan>
+                            {
+                                statusStock ? '+' : '-'
+                            }
+                        </StatusSpan>
+                        <P>Compras/Stock</P>
                     </div>                    
-                    <FontAwesomeIcon className="icon" icon={faBoxes} />
-                </div>
-                <div className="card-bottom">
-                    <p><Link to="/">Ver Stock</Link></p>
-                </div>
-            </div>
-
-            <div className="fullcard providers">
-                <div className="card">
-                    <div className="card-info">
-                        <span>0</span>
-                        <p>Proveedores</p>
-                    </div>                    
-                    <FontAwesomeIcon className="icon" icon={faTruck} />
-                </div>
+                    <Icon color="stock" icon={faBoxes} />
+                </Card>
                 <div>
-                    <p><Link to="/">Ver Proveedores</Link></p>
+                    <p><Link to="/stocktable">Ver Stock</Link></p>
                 </div>
-            </div>
+            </FullCard>
 
-            <div className="fullcard reports">
-                <div className="card">
-                    <div className="card-info">
-                        <span>Junio</span>
-                        <p>Reportes</p>
+            <FullCard color="providers">
+                <Card>
+                    <div>
+                        <StatusSpan>
+                            {providers.length}
+                        </StatusSpan>
+                        <P>Proveedores</P>
                     </div>                    
-                    <FontAwesomeIcon className="icon" icon={faClone} />
-                </div>
+                    <Icon color="providers" icon={faTruck} />
+                </Card>
                 <div>
-                    <p><Link to="/">Mas Informacion</Link></p>
+                    <p><Link to="/providerstable">Ver Proveedores</Link></p>
                 </div>
-            </div>
-        </div>
+            </FullCard>
+
+            <FullCard color="reports">
+                <Card>
+                    <div>
+                        <StatusSpan>Junio</StatusSpan>
+                        <P>Reportes</P>
+                    </div>                    
+                    <Icon color="reports" icon={faClone} />
+                </Card>
+                <div>
+                    <p><Link to="/reports">Mas Informacion</Link></p>
+                </div>
+            </FullCard>
+        </CardContainer>
     )
 }
 

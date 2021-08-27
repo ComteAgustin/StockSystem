@@ -1,37 +1,48 @@
 // Import dependencies
 import React from 'react'
-// Import Css
-import './stock.css'
+// Import Components
+import {
+    SectionBodyH2,
+    SectionBody,
+    SectionH3Span,
+    SectionH3,
+    Section,
+    InfoBody,
+    InfoContainer,
+    InfoH5,
+    InfoIcon,
+    InfoP,
+} from 'styles/formCrudStyles'
 import StockForm from 'components/StockForm'
 
 // Component
 const Stock = () => {
 
     return(
-        <div className="section">
-            <h3 className="section-h3 container">
+        <Section>
+            <SectionH3>
                 Stock
-                <span>
+                <SectionH3Span>
                     Cargar
-                </span>
-            </h3>
-            <div class="section--body container">
-                <h2 className="container">
+                </SectionH3Span>
+            </SectionH3>
+            <SectionBody>
+                <SectionBodyH2>
                     Cargar
-                </h2>
-                <div class="info">
-                    <div className="info-body container">
-                        <h5>
-                            <i>I</i> Info
-                        </h5>
-                        <p>Recuerde registrar articulo y proveedor para cargar stock</p>
-                    </div>
-                </div>
+                </SectionBodyH2>
+                <InfoContainer>
+                    <InfoBody>
+                        <InfoH5>
+                            <InfoIcon>I</InfoIcon> Info
+                        </InfoH5>
+                        <InfoP>Recuerde registrar articulo y proveedor para cargar stock</InfoP>
+                    </InfoBody>
+                </InfoContainer>
 
                 <StockForm />
 
-            </div>
-        </div>
+            </SectionBody>
+        </Section>
     )
 
 }

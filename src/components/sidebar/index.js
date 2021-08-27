@@ -1,10 +1,22 @@
 // Import dependecies
 import React, {useState} from 'react'
-import {Link} from 'wouter'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowLeft, faCalendarAlt, faFileUpload, faShoppingBag, faTruck, faBoxes} from '@fortawesome/free-solid-svg-icons'
-// Import Css
-import './sidebar.css'
+// Import component
+import {
+    ContainerUl,
+    DropdownMenu,
+    Icon,
+    Li,
+    NavigationLi,
+    NavigationUl,
+    SidebarContainer,
+    SidebarH3,
+    DropdownLink as Link,
+    DropdownIcon
+} from './styles'
+import {
+    Container
+} from 'styles'
 
 // Component
 const Sidebar = () => {
@@ -14,59 +26,56 @@ const Sidebar = () => {
     
     const handleDropdown = () => {
         setDropdown(!dropdown)
-        
-        const dropdownElement = document.getElementById('dropdown')
-        dropdownElement.classList.toggle('active-drop')
     }
 
     return(
-        <div className="sidebar">
-            <div className="container">
-                <h3>
+        <SidebarContainer>
+            <Container>
+                <SidebarH3>
                     Menu de navegación
-                </h3>
-                <div className="navigation">
-                    <ul className="navigation-ul">
-                        <li className="navigation-li">
-                            <FontAwesomeIcon icon={faCalendarAlt} className="icon" />
+                </SidebarH3>
+                <div>
+                    <NavigationUl>
+                        <NavigationLi>
+                            <Icon icon={faCalendarAlt} />
                             <Link to="/">Dashboard</Link>
-                        </li>
-                        <li className="navigation-li dropdown" id="dropdown" onClick={handleDropdown}>
+                        </NavigationLi>
+                        <NavigationLi dropdown id="dropdown" onClick={handleDropdown}>
                             <div>
-                                <FontAwesomeIcon icon={faFileUpload} className="icon" />
+                                <Icon icon={faFileUpload} />
                                 Cargar
                             </div>
-                            <FontAwesomeIcon icon={faArrowLeft} className="icon icon-arrow" />
-                        </li>
+                            <Icon arrow={dropdown ? true : false} icon={faArrowLeft} />
+                        </NavigationLi>
                         {
                             dropdown ? (
-                            <div className="dropdown-menu">
-                                <ul className="dropdown-ul container">
-                                    <li className="dropdown-li">
-                                        <Link to="/articles" className="dropdown-item">
-                                            <FontAwesomeIcon icon={faShoppingBag} className="icon" />
+                            <DropdownMenu>
+                                <ContainerUl>
+                                    <Li>
+                                        <Link to="/articles">
+                                            <DropdownIcon icon={faShoppingBag} className="icon" />
                                             Articulo
                                         </Link>
-                                    </li>
-                                    <li className="dropdown-li">
-                                        <Link to="/providers" className="dropdown-item">
-                                            <FontAwesomeIcon icon={faTruck} className="icon" />
+                                    </Li>
+                                    <Li>
+                                        <Link to="/providers">
+                                            <DropdownIcon icon={faTruck} className="icon" />
                                             Proveedor
                                         </Link>
-                                    </li>
-                                    <li className="dropdown-li">
-                                        <Link to="/stock" className="dropdown-item">
-                                            <FontAwesomeIcon icon={faBoxes} className="icon" />    
+                                    </Li>
+                                    <Li>
+                                        <Link to="/stock">
+                                            <DropdownIcon icon={faBoxes} className="icon" />    
                                             Stock
                                         </Link>
-                                    </li>
-                                </ul>
-                            </div>) : null
+                                    </Li>
+                                </ContainerUl>
+                            </DropdownMenu>) : null
                         }
-                    </ul>
+                    </NavigationUl>
                 </div>
-            </div>
-        </div>
+            </Container>
+        </SidebarContainer>
     )
 }
 

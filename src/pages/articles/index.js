@@ -2,37 +2,48 @@
 import React from 'react'
 // Import Components
 import ArticlesForm from 'components/ArticlesForm'
+import {
+    Section,
+    SectionBody,
+    SectionBodyH2,
+    SectionH3,
+    SectionH3Span,
+    InfoBody,
+    InfoContainer,
+    InfoH5,
+    InfoIcon,
+    InfoP
+    
+} from 'styles/formCrudStyles'
 // Import Css
 import 'index.css'
-import 'components/form-crud.css'
-import './articles.css'
 
 // Component
 const Articles = () => {
     return(
-        <div className="section">   
-            <h3 className="section-h3 container">
+        <Section>   
+            <SectionH3>
                 Articulos  
-                <span>
+                <SectionH3Span>
                     registrar
-                </span>
-            </h3>
-            <div className="section--body container">
-                <h2 class="container">
+                </SectionH3Span>
+            </SectionH3>
+            <SectionBody>
+                <SectionBodyH2>
                     Registrar
-                </h2>
-                <div className="info">
-                    <div className="info-body container">
-                        <h5>
-                            <i>I</i> Info
-                        </h5>
-                        <p>Recuerde cargar el stock del articulo que esta cargando</p>
-                    </div>
-                </div>
+                </SectionBodyH2>
+                <InfoContainer>
+                    <InfoBody>
+                        <InfoH5>
+                            <InfoIcon>I</InfoIcon> Info
+                        </InfoH5>
+                        <InfoP>Recuerde cargar el stock del articulo que esta cargando</InfoP>
+                    </InfoBody>
+                </InfoContainer>
 
                 <ArticlesForm />
-            </div>
-        </div>
+            </SectionBody>
+        </Section>
     )
 }
 

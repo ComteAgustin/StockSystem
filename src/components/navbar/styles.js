@@ -1,53 +1,56 @@
-/* Navbar Styles */
+// Import dependencies 
+import styled from '@emotion/styled'
 
-.navbar {
+// Create Styles
+
+// Navbar
+export const Navbar = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
     background-color: var(--background-navbar-color);
     height: 10vh;
-}
 
-.navbar--title {
+    position: fixed
+`
+
+// Title Container
+export const TitleContainer = styled.div`
     width: 20vw;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: var(--secondary-font);
-}
+`
 
-.navbar--main {
+// Navbar Main Container
+export const NavbarMainContainer = styled.div`
     width: 80vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 0 6px #1f1f1f;
-}
+`
 
-.hamburger {
-    margin-left: 20px;
-    font-size: 2em;
-}
-
-.menu-account ul {
+// Menu Ul
+export const MenuUl = styled.ul`
     display: flex;
     flex-direction: row;
     align-items: center;
     list-style-type: none;
-}
+`
 
-.menu-account .item-menu {
+// Menu Item
+export const MenuItem = styled.li`
     margin-left: 30px;
     font-size: 2em;
-}
+    
+    ${props => props.last ? `margin-right: 20px;` : null}
+    
+    :hover {
+        transform: scale(1.2, 1.2);
+        cursor: pointer;
+    }
 
-.menu-account .item-menu:last-child {
-    margin-right: 20px;
-}
-
-.item-menu:hover,
-.hamburger:hover {
-    transform: scale(1.2, 1.2);
-    cursor: pointer;
-}
+`

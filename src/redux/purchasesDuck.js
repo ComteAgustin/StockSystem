@@ -1,24 +1,23 @@
 // Import dependencies
 import axios from 'axios'
-// Import Api Url
 import {config} from 'vars'
 
 // State
 const initialState = {
-    stock: []
+    purchases: []
 }
 
 // Types
-const CreateStock = '@stock/create'
-const GetStock = '@stock/get'
+const CreatePurchase = '@purchase/create'
+const GetPurchases = '@purchases/get'
 
-// Reducer
-export const stockReducer = (state = initialState, action) => {
-    switch(action.type) {
-        case CreateStock:
-            return {...state, stock: action.payload}
-        case GetStock:
-            return {...state, stock: action.payload}
+// Reducers
+export const purchasesReducer = (state = initialState, action) => {
+    switch(action.type){
+        case CreatePurchase:
+            return {...state}
+        case GetPurchases:
+            return {...state, purchases: action.payload}
         default:
             return state
     }
@@ -26,10 +25,10 @@ export const stockReducer = (state = initialState, action) => {
 
 // Actions
 
-// Create Stock
-export const createStock = data => async (dispatch, getState) => {
+// Create Provider
+export const createPurchase = data => async (dispatch, getState) => {
     try {
-        // Request
+        // Request        
         const res = await axios.post(`${config.API_URL}/api/purchases`, {
             headers: {
                 'content-type': 'application/json'
@@ -39,7 +38,7 @@ export const createStock = data => async (dispatch, getState) => {
 
         // Dispatch
         dispatch({
-            type: CreateStock,
+            type: CreatePurchase,
             payload: res.data
         })
 
@@ -48,18 +47,17 @@ export const createStock = data => async (dispatch, getState) => {
     }
 }
 
-// Get Stock
-export const getStock = () => async (dispatch, getState) => {
+// Get Providers
+export const getPurchases = () => async (dispatch, getState) => {
     try {
         // Request
         const res = await axios.get(`${config.API_URL}/api/purchases`)
 
         // Dispatch
         dispatch({
-            type: GetStock,
+            type: GetPurchases,
             payload: res.data
         })
-
     } catch (err) {
         console.log(err)
     }

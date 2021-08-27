@@ -11,14 +11,18 @@ const initialState = {
 // Types
 const CreateArticle = '@articles/create'
 const GetArticles = '@articles/get'
+const DeleteArticle = '@articles/delete'
 
 // Reducer 
 export const articlesReducer = (state = initialState, action) => {
     switch(action.type){
-        case GetArticles:
-            return {...state, articles: action.payload}
         case CreateArticle:
-            return {...state, articles: action.payload}
+            return {...state}
+        case GetArticles:
+            return {...state, articles: action.payload} 
+        case DeleteArticle: 
+            state.articles = state.articles.filter(i => i._id !== action.payload)
+            return state
         default:
             return state
     }
@@ -53,6 +57,19 @@ export const getArticles = () => async (dispatch, getState) => {
         dispatch({
             type: GetArticles,
             payload: res.data 
+        })
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+// Delete Article
+export const deleteArticle = id => async (dispatch, getState) => {
+    try {
+        await axios.delete(`${config.API_URL}/api/articles/${id}`)
+        dispatch({
+            type: DeleteArticle,
+            payload: id
         })
     } catch (err) {
         console.log(err)

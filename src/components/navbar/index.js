@@ -3,28 +3,42 @@ import React from 'react'
 import {Link} from 'wouter'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faUser, faTimes} from '@fortawesome/free-solid-svg-icons'
-// Import Css
-import './navbar.css'
+import useLogin from 'hooks/useLogin'
+// Import components
+import {
+    Navbar,
+    TitleContainer,
+    NavbarMainContainer,
+    MenuUl,
+    MenuItem
+} from './styles'
 
 // Component
-const Navbar = () => {
+const Nav = () => {
+    
+    const {isLogged, logout} = useLogin() 
+
     return(
-        <nav className="navbar">
-            <div className="navbar--title">
+        <Navbar>
+            <TitleContainer className="navbar--title">
                 <h1>Sistema de <br /> Ventas</h1>
-            </div>
-            <div className="navbar--main">
+            </TitleContainer>
+            <NavbarMainContainer>
                 <div></div>
-                <div className="menu-account">
-                    <ul>
-                        <li className="item-menu"><Link to="/config"><FontAwesomeIcon icon={faUser} /></Link></li>
-                        <li className="item-menu"><Link to="/signin"><FontAwesomeIcon icon={faTimes} /></Link></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                {
+                    isLogged ? (
+                        <div>
+                            <MenuUl>
+                                <MenuItem><Link to="/config"><FontAwesomeIcon icon={faUser} /></Link></MenuItem>
+                                <MenuItem last onClick={logout}><FontAwesomeIcon icon={faTimes} /></MenuItem>
+                            </MenuUl>
+                        </div>
+                    ) : null
+                }
+            </NavbarMainContainer>
+        </Navbar>
     )
 }
 
 // Export 
-export default Navbar
+export default Nav
