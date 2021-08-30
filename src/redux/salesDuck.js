@@ -37,7 +37,7 @@ export const salesReducer = (state = initialState, action) => {
 // Actions
 
 // Create sales
-export const createSale = data => async (dispatch, getState) => {
+export const createSale = data => async dispatch => {
     try {
         // Request        
         const res = await axios.post(`${config.API_URL}/api/sales`, {
@@ -59,7 +59,7 @@ export const createSale = data => async (dispatch, getState) => {
 }
 
 // Get sales
-export const getSales = () => async (dispatch, getState) => {
+export const getSales = () => async dispatch => {
     try {
         // Request
         const res = await axios.get(`${config.API_URL}/api/sales`)

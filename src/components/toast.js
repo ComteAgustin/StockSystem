@@ -1,5 +1,5 @@
 // Import dependencies
-import {ToastContainer} from "react-toastify"
+import { ToastContainer } from "react-toastify"
 
 // Export component
 export const Toastify = () => {
@@ -12,5 +12,5 @@ export const Toastify = () => {
         rtl={false}
         pauseOnFocusLoss
         pauseOnHover
-        />
+    />
 }

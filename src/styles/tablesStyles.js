@@ -1,7 +1,7 @@
 // Import dependencies
 import styled from "@emotion/styled"
-import {Container} from 'styles/index'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { Container } from 'styles/index'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // Styles
 
@@ -32,7 +32,7 @@ export const Table = styled.table`
 // Table Tr
 
 // If is header
-const ifHeader = props => props.header ? `font-weight: bold; background-color: #fff` : null 
+const ifHeader = props => props.header ? `font-weight: bold; background-color: #fff` : null
 const ifProviders = props => props.providers ? `grid-template-columns: 20% 20% 20% 20% 20%;` : null
 
 export const TableTr = styled.tr`

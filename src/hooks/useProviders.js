@@ -1,7 +1,7 @@
 // Import dependencies
-import {useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {getProviders, deleteProvider} from 'redux/providersDuck'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProviders, deleteProvider } from 'redux/providersDuck'
 
 // Hooks
 export default () => {
@@ -20,7 +20,7 @@ export default () => {
     // Function for delete provider
     const delProvider = id => {
         dispatch(deleteProvider(id))
-    } 
+    }
 
     // Return
     return {

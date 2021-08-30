@@ -1,7 +1,7 @@
 // Import dependencies
 import React from 'react'
-import {Link} from 'wouter'
-import {faMinus, faPlus} from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'wouter'
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import useStock from 'hooks/useStock'
 // Import components
 import {
@@ -11,10 +11,10 @@ import {
 } from 'styles/tablesStyles'
 
 // Component
-const StockTable = ({items = Array}) => {
+const StockTable = ({ items = Array }) => {
 
     // Get function from hook
-    const {delArticle} = useStock()
+    const { delArticle } = useStock()
 
     // Handle delete onClick
     const handleDelete = e => {

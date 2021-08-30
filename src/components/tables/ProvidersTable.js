@@ -1,7 +1,7 @@
 // Import dependencies
 import React from 'react'
-import {Link, useLocation} from 'wouter'
-import {faMinus, faPlus, faPencilAlt} from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'wouter'
+import { faMinus, faPlus, faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import useProviders from 'hooks/useProviders'
 // Import components
 import {
@@ -11,10 +11,10 @@ import {
 } from 'styles/tablesStyles'
 
 // Component
-const ProvidersTable = ({items = Array}) => {
+const ProvidersTable = ({ items = Array }) => {
 
     // Get function from hook
-    const {delProvider} = useProviders()
+    const { delProvider } = useProviders()
 
     // Handle delete onClick
     const handleDelete = e => {

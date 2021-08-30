@@ -12,23 +12,23 @@ import {
 
 // Component
 const Providers = () => {
-    return(
+    return (
         <Section>
-        <SectionH3>
-            Proveedores
-            <SectionH3Span>
-                Registrar
-            </SectionH3Span>
-        </SectionH3>
-        <SectionBody>
-            <SectionBodyH2>
-                Registrar
-            </SectionBodyH2>
+            <SectionH3>
+                Proveedores
+                <SectionH3Span>
+                    Registrar
+                </SectionH3Span>
+            </SectionH3>
+            <SectionBody>
+                <SectionBodyH2>
+                    Registrar
+                </SectionBodyH2>
 
-        <ProvidersForm />
+                <ProvidersForm />
 
-        </SectionBody>
-    </Section>
+            </SectionBody>
+        </Section>
     )
 }
 

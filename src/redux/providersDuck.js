@@ -30,7 +30,7 @@ export const providerReducer = (state = initialState, action) => {
 // Actions
 
 // Create Provider
-export const createProvider = data => async (dispatch, getState) => {
+export const createProvider = data => async dispatch => {
     try {
         // Request        
         const res = await axios.post(`${config.API_URL}/api/provider`, {
@@ -51,7 +51,7 @@ export const createProvider = data => async (dispatch, getState) => {
 }
 
 // Get Providers
-export const getProviders = () => async (dispatch, getState) => {
+export const getProviders = () => async dispatch => {
     try {
         // Request
         const res = await axios.get(`${config.API_URL}/api/provider`)
@@ -66,7 +66,7 @@ export const getProviders = () => async (dispatch, getState) => {
 }
 
 // Delete Provider
-export const deleteProvider = id => async (dispatch, getState) => {
+export const deleteProvider = id => async dispatch => {
     try {
         await axios.delete(`${config.API_URL}/api/provider/${id}`)
         dispatch({

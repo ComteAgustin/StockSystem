@@ -1,6 +1,6 @@
 // Import dependencies
 import React from 'react'
-import {Formik} from 'formik'
+import { Formik } from 'formik'
 import useUser from 'hooks/useUser'
 import useLogin from 'hooks/useLogin'
 // Import components
@@ -18,8 +18,8 @@ import {
 // Component
 const Config = () => {
 
-    const {user, updateData} = useUser()
-    const {logout} = useLogin()
+    const { user, updateData } = useUser()
+    const { logout } = useLogin()
 
     // Initial Values for formik
     const initialValues = {
@@ -52,11 +52,11 @@ const Config = () => {
                     validate={validate}
                     onSubmit={values => {
                         updateData(values, user[0]._id)
-                        logout()    
+                        logout()
                     }}
                 >
                     {
-                        ({username, password, newPassword}) => (
+                        ({ username, password, newPassword }) => (
                             <FormContainer>
                                 <FormGroup>
                                     <FormLabel for="username">Cambiar nombre de usuario</FormLabel>

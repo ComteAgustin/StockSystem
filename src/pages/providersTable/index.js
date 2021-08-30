@@ -15,10 +15,10 @@ import {
 const ProvidersTable = () => {
 
     // Get providers for table
-    const {providers} = useProviders()
+    const { providers } = useProviders()
 
     // Return 
-    return(
+    return (
         <TableSection>
             <TableH2>
                 Stock

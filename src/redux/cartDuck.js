@@ -54,7 +54,7 @@ export const createCart = (article, quantity, amount) => dispatch => {
 }
 
 // Get Cart
-export const getCart = () => (dispatch, getState) => {
+export const getCart = () => dispatch => {
     dispatch({
         type: getArticles
     })

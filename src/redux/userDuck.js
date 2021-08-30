@@ -1,6 +1,6 @@
 // Import dependencies
 import axios from 'axios'
-import {config} from 'vars'
+import { config } from 'vars'
 
 // State
 const initialState = {
@@ -13,11 +13,11 @@ const GetUser = '@user/get'
 
 // Reducers
 export const userReducer = (state = initialState, action) => {
-    switch(action.type){
+    switch (action.type) {
         case CreateUser:
-            return {...state, user: action.payload}
+            return { ...state, user: action.payload }
         case GetUser:
-            return {...state, user: action.payload}
+            return { ...state, user: action.payload }
         default:
             return state
     }
@@ -26,7 +26,7 @@ export const userReducer = (state = initialState, action) => {
 // Actions
 
 // Create user
-export const createUser = data => async (dispatch, getState) => {
+export const createUser = data => async dispatch => {
     try {
         // Request        
         const res = await axios.post(`${config.API_URL}/api/user`, {
@@ -48,7 +48,7 @@ export const createUser = data => async (dispatch, getState) => {
 }
 
 // Get User
-export const getUser = () => async (dispatch, getState) => {
+export const getUser = () => async dispatch => {
     try {
         // Request
         const res = await axios.get(`${config.API_URL}/api/user`)

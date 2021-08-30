@@ -1,6 +1,6 @@
 // Import dependencies
 import axios from 'axios'
-import {config} from 'vars'
+import { config } from 'vars'
 
 // Service
 export const signinService = async (username, password) => {
@@ -15,7 +15,7 @@ export const signinService = async (username, password) => {
             }
         })
 
-        return res.data.status ? 400 : res.data.token 
+        return res.data.status ? 400 : res.data.token
 
     } catch (err) {
         console.log(err)

@@ -1,7 +1,7 @@
 {
-  "name": "front",
+  "name": "sales-system",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "dependencies": {
     "@emotion/styled": "^11.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

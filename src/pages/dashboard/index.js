@@ -7,7 +7,6 @@ import { getArticles } from 'redux/articlesDuck'
 import { createCart, clearCart, deleteCart } from 'redux/cartDuck'
 import { createSale, createTotalSales } from 'redux/salesDuck'
 import { REGEX } from 'vars'
-import useLocation from 'wouter/use-location'
 // Import components
 import Cards from '../../components/cards-container'
 import { Cashier, CashierP, CashierUl, CashierLi, SummaryIcon } from 'components/cashier/styles'
@@ -45,9 +44,6 @@ const Home = () => {
 
     const [totalAmount, setTotalAmount] = useState(0)
 
-    // Init hook for navigate
-    const [, navigate] = useLocation()
-
     // Init Redux hook
     const dispatch = useDispatch()
 
@@ -59,7 +55,7 @@ const Home = () => {
     const articles = useSelector(store => store.articles)
 
     // Cart
-    const {cart} = useCart()
+    const { cart } = useCart()
 
     // Validate form
     const validate = values => {
@@ -108,7 +104,7 @@ const Home = () => {
             setTotalAmount(0)
 
             for (let i = 0; i < cart.length; i++) {
-                dispatch(createTotalSales(cart[i].amount))    
+                dispatch(createTotalSales(cart[i].amount))
             }
         }, 3000)
 

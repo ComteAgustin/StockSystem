@@ -1,13 +1,13 @@
 // Import dependencies
-import {useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import {getUser} from 'redux/userDuck'
-import {updateDataService} from 'services/updateData'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getUser } from 'redux/userDuck'
+import { updateDataService } from 'services/updateData'
 
 
 // Hook
 export default () => {
-    
+
     // Init redux hooks
     const dispatch = useDispatch()
 

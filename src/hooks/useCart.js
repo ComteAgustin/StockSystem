@@ -1,7 +1,7 @@
 // Import dependencies
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { createCart, getCart, deleteCart } from 'redux/cartDuck'
+import { getCart } from 'redux/cartDuck'
 
 // Hook
 export default () => {

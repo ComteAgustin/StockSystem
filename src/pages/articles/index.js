@@ -13,17 +13,17 @@ import {
     InfoH5,
     InfoIcon,
     InfoP
-    
+
 } from 'styles/formCrudStyles'
 // Import Css
 import 'index.css'
 
 // Component
 const Articles = () => {
-    return(
-        <Section>   
+    return (
+        <Section>
             <SectionH3>
-                Articulos  
+                Articulos
                 <SectionH3Span>
                     registrar
                 </SectionH3Span>

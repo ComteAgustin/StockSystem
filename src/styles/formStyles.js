@@ -1,6 +1,6 @@
 // Import dependencies
 import styled from '@emotion/styled'
-import {Form, Field, ErrorMessage} from 'formik'
+import { Form, Field, ErrorMessage } from 'formik'
 
 // Create Styles
 
@@ -8,7 +8,7 @@ import {Form, Field, ErrorMessage} from 'formik'
 export const FormContainer = styled(Form)`
     width: 95%;
     margin: 0 auto;
-` 
+`
 
 // Form Group
 export const FormGroup = styled.div`
@@ -67,4 +67,4 @@ export const FormColumns = styled.div`
     & div input {
         width: 90%;
     }
-` 
+`

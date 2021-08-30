@@ -1,7 +1,7 @@
 // Import dependencies
 import axios from 'axios'
 // Import Api Url
-import {config} from 'vars'
+import { config } from 'vars'
 
 // State
 const initialState = {
@@ -15,12 +15,12 @@ const DeleteArticle = '@articles/delete'
 
 // Reducer 
 export const articlesReducer = (state = initialState, action) => {
-    switch(action.type){
+    switch (action.type) {
         case CreateArticle:
-            return {...state}
+            return { ...state }
         case GetArticles:
-            return {...state, articles: action.payload} 
-        case DeleteArticle: 
+            return { ...state, articles: action.payload }
+        case DeleteArticle:
             state.articles = state.articles.filter(i => i._id !== action.payload)
             return state
         default:
@@ -31,7 +31,7 @@ export const articlesReducer = (state = initialState, action) => {
 // Actions
 
 // Create Articles
-export const createArticle = data => async (dispatch, getState) => {
+export const createArticle = data => async dispatch => {
     try {
         const res = await axios.post(`${config.API_URL}/api/articles`, {
             headers: {
@@ -51,12 +51,12 @@ export const createArticle = data => async (dispatch, getState) => {
 }
 
 // Get Articles
-export const getArticles = () => async (dispatch, getState) => {
+export const getArticles = () => async dispatch => {
     try {
         const res = await axios.get(`${config.API_URL}/api/articles`)
         dispatch({
             type: GetArticles,
-            payload: res.data 
+            payload: res.data
         })
     } catch (err) {
         console.log(err)
@@ -64,7 +64,7 @@ export const getArticles = () => async (dispatch, getState) => {
 }
 
 // Delete Article
-export const deleteArticle = id => async (dispatch, getState) => {
+export const deleteArticle = id => async dispatch => {
     try {
         await axios.delete(`${config.API_URL}/api/articles/${id}`)
         dispatch({

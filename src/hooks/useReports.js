@@ -1,5 +1,3 @@
-// Import dependencies
-
 // Hook
 export default () => {
 

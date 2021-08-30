@@ -18,7 +18,7 @@ import StockForm from 'components/StockForm'
 // Component
 const Stock = () => {
 
-    return(
+    return (
         <Section>
             <SectionH3>
                 Stock

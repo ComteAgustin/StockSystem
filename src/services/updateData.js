@@ -1,6 +1,6 @@
 // Import dependencies
 import axios from 'axios'
-import {config} from 'vars'
+import { config } from 'vars'
 
 // Service
 export const updateDataService = async (data, userid) => {
@@ -11,8 +11,8 @@ export const updateDataService = async (data, userid) => {
             },
             data
         })
-    
-        return res.data.status ? 400 : 200  
+
+        return res.data.status ? 400 : 200
     } catch (err) {
         console.log(err)
     }

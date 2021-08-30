@@ -16,10 +16,10 @@ import {
 const StockTable = () => {
 
     // Get stock for table
-    const {stock} = useStock()
+    const { stock } = useStock()
 
     // Return 
-    return(
+    return (
         <TableSection>
             <TableH2>
                 Stock
