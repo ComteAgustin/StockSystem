@@ -1,5 +1,5 @@
 export const config = {
-    API_URL: 'https://sales-system-api.herokuapp.com/',
+    API_URL: 'https://sales-system-api.herokuapp.com',
 }
 
 export const REGEX = {
