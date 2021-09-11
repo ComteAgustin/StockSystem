@@ -1,5 +1,6 @@
 // Import dependencies
 import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.min.css'
 
 // Export component
 export const Toastify = () => {
