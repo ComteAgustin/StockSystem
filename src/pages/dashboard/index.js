@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getArticles } from 'redux/articlesDuck'
 import { createCart, clearCart, deleteCart } from 'redux/cartDuck'
 import { createSale, createTotalSales } from 'redux/salesDuck'
+import SelectInput from 'components/selectInput'
+import { Toastify } from 'components/toast'
+import useCart from 'hooks/useCart'
 import { REGEX } from 'vars'
 // Import components
 import Cards from '../../components/cards-container'
@@ -35,9 +38,6 @@ import {
     FormLabel,
     FormColumns
 } from 'styles/formStyles'
-import SelectInput from 'components/selectInput'
-import { Toastify } from 'components/toast'
-import useCart from 'hooks/useCart'
 
 // Component
 const Home = () => {
@@ -64,6 +64,10 @@ const Home = () => {
         let article = articles.articles.find(i => i.name === values.article)
         if (article.stock === 0) {
             errors.quantity = 'No hay stock'
+        }
+
+        if(values.quantity > article.stock) {
+            errors.quantity = `El stock es de: ${article.stock} `
         }
 
         if (!REGEX.numbers.test(values.quantity)) {
@@ -96,6 +100,7 @@ const Home = () => {
     const handleSell = () => {
         for (let i = 0; i < cart.length; i++) {
             dispatch(createSale(cart[i]))
+            console.log(cart[i])
         }
         toast.success("venta realizada")
 

@@ -1,10 +1,6 @@
 // Import dependencies
 import { ToastContainer } from "react-toastify"
-import 'react-toastify/dist/ReactToastify.min.css'
-
-import { injectStyle } from "react-toastify/dist/inject-style";
-
-injectStyle();
+import 'react-toastify/dist/ReactToastify.css'
 
 // Export component
 export const Toastify = () => {
@@ -15,7 +11,5 @@ export const Toastify = () => {
         newestOnTop={false}
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
-        pauseOnHover
     />
 }
