@@ -3,13 +3,28 @@ export default () => {
 
     // Function for sort all the values in a array
     const sortMonthlyValues = values => {
+
         let sortedArrays = []
 
         values.forEach(value => {
-            const month = parseInt(value.createdAt.substring(5, 7).replace('0', '')) - 1
-            sortedArrays[month]
-                ? sortedArrays[month] = parseInt(sortedArrays[month] + value.amount)
-                : sortedArrays[month] = []
+            let month = parseInt(value.createdAt.substring(5, 7).replace('0', '')) - 1
+            let age = value.createdAt.substring(0, 4)
+
+            console.log(age)
+
+            console.log(Boolean(sortedArrays.find(i => i.label == age)))
+
+            if (sortedArrays.find(i => i.label == age)) {
+                let index = sortedArrays.findIndex(i => i.label == age)
+                sortedArrays[index].data[month] = sortedArrays[index].data[month] + value.amount
+            } else {
+                sortedArrays.push({
+                    label: age,
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                })
+                let index = sortedArrays.findIndex(i => i.label == age)
+                sortedArrays[index].data[month] = sortedArrays[index].data[month] + value.amount
+            }
         })
 
         return sortedArrays
@@ -55,3 +70,56 @@ export default () => {
 }
 
 // Ordenar en arrays los datos, y agruparlos por mes
+
+
+/*
+
+    Entries:
+    [
+        {
+            _id: "613fe6893dd6e900166d87b6",
+            amount: 200,
+            articleID: "612ed5d44107a200160d3485",
+            createdAt: "2021-09-14T00:02:17.502Z",
+            quantity: 1,
+            updatedAt: "2021-09-14T00:02:17.502Z",
+        },{
+            _id: "613fe6893dd6e900166d87b6",
+            amount: 200,
+            articleID: "612ed5d44107a200160d3485",
+            createdAt: "2021-09-14T00:02:17.502Z",
+            quantity: 1,
+            updatedAt: "2021-09-14T00:02:17.502Z",
+        },{
+            _id: "613fe6893dd6e900166d87b6",
+            amount: 200,
+            articleID: "612ed5d44107a200160d3485",
+            createdAt: "2022-09-14T00:02:17.502Z",
+            quantity: 1,
+            updatedAt: "2022-09-14T00:02:17.502Z",
+        },{
+            _id: "613fe6893dd6e900166d87b6",
+            amount: 200,
+            articleID: "612ed5d44107a200160d3485",
+            createdAt: "2022-09-14T00:02:17.502Z",
+            quantity: 1,
+            updatedAt: "2022-09-14T00:02:17.502Z",
+        }
+    ]
+
+
+    Output:
+    [
+        {
+            label = age,
+            data = totalAmount
+        }, {
+            label,
+            data
+        }, {
+            label,
+            data
+        }
+    ]
+
+*/
